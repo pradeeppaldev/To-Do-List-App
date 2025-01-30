@@ -3,8 +3,7 @@ const itemSection = document.querySelector('.listSection');
 const addButton = document.getElementById('addButton');
 
 const crossIcon = '&#215';
-
-const inputValue = document.getElementById('inputSpace').value;
+const tickMark = '&#10004';
 
 addButton.addEventListener('click', () => {
 
@@ -28,6 +27,30 @@ addButton.addEventListener('click', () => {
     list.append(removeDiv);
     removeDiv.innerHTML = crossIcon;
 
+    removeDiv.addEventListener('click', () => {
+        list.remove();
+    });
+
+    tickIcon.addEventListener('click', () => {
+        if(tickIcon.innerHTML.trim() === "")
+        {
+            tickIcon.innerHTML = tickMark;
+            list.style.textDecoration = "line-through";
+            list.style.fontStyle = "italic";
+            tickIcon.style.backgroundColor = "lightgreen";
+        }
+        else
+        {
+            tickIcon.innerHTML = "";
+            list.style.textDecoration = "none";
+            list.style.fontStyle = "normal";
+            tickIcon.style.backgroundColor = "white";
+        }
+    });
+
     }
+
+    document.getElementById('inputSpace').value = "";
+
 
 });
